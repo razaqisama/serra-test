@@ -13,24 +13,28 @@
  *             schema:
  *               type: object
  *               properties:
+ *                 requestID:
+ *                   type: string
+ *                   example: "b866acb5-7777-465c-a136-70f9f2066987"
  *                 status:
  *                   type: integer
  *                   example: 200
  *                 data:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: integer
- *                       example: 1
- *                     name:
- *                       type: string
- *                       example: "New Category"
- *                     age:
- *                       type: integer
- *                       example: 20
- *                     email:
- *                       type: string
- *                       example: "users@email.com"
+ *                   type: array
+ *                   items: 
+ *                      properties:
+ *                        id:
+ *                          type: integer
+ *                          example: 1
+ *                        name:
+ *                          type: string
+ *                          example: "John"
+ *                        age:
+ *                          type: integer
+ *                          example: 20
+ *                        email:
+ *                          type: string
+ *                          example: "users@email.com"
  *                 message:
  *                   type: string
  *                   example: "Create Category Data Success"
@@ -39,3 +43,20 @@
  *       500:
  *         description: Internal Server Error
  */
+
+import { db } from "@/db";
+import { createResponse } from "@/utils/createResponse";
+import { NextFunction, Request, Response } from "express";
+
+export async function getAll(_: Request, res: Response, next: NextFunction) {
+  try {
+    const users = await db.query.usersTable.findMany();
+
+    return createResponse(res, 200, {
+      data: users,
+      message: "Get all users data success",
+    })
+  } catch (error) {
+    return next(error);
+  }
+}
