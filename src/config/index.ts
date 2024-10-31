@@ -14,4 +14,9 @@ export const config = {
       ssl: false,
     },
   },
+  mailer: {
+    service: process.env.MAILER_SERVICE,
+    user: process.env.MAILER_USER,
+    password: process.env.MAILER_PASSWORD,
+  }
 };

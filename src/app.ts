@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 import routes from "./routes";
 import errorHandler from './middlewares/error-handler';
+import { connectToRabbitMQ } from './rabbitmq';
 
 const app = express();
 const PORT = config.app.port;
@@ -23,7 +24,8 @@ app.use('/', router.get('/', (_req, res) => {
 app.use('/api/v1', routes);
 app.use(errorHandler);
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, async () => {
+  await connectToRabbitMQ();
   console.log(`Server is running on port ${PORT}`);
 });
 
