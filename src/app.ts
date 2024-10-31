@@ -4,6 +4,7 @@ import { config } from "./config";
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 import routes from "./routes";
+import errorHandler from './middlewares/error-handler';
 
 const app = express();
 const PORT = config.app.port;
@@ -20,6 +21,7 @@ app.use('/', router.get('/', (_req, res) => {
 }));
 
 app.use('/api/v1', routes);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

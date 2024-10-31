@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 
 export interface IError {
   message: string;
-  status: number;
+  statusCode: number;
 }
 
 export default function errorHandler(
@@ -12,8 +12,9 @@ export default function errorHandler(
   res: Response,
   _next: NextFunction,
 ) {
-  const { status, message } = err;
-  return createResponse(res, status ?? 500, {
+  const { statusCode, message } = err;
+  console.log(err);
+  return createResponse(res, statusCode ?? 500, {
     error: message ?? 'Internal Server Error',
   })
 }

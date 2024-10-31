@@ -1,5 +1,7 @@
-import { getAll } from "./getAllUser"
+import { getUsers } from "./get-users"
+import { createUser } from "./create-user";
 
 export default {
-  getAll,
+  getUsers,
+  createUser,
 }

@@ -45,10 +45,10 @@
  */
 
 import { db } from "@/db";
-import { createResponse } from "@/utils/createResponse";
+import { createResponse } from "@/utils/create-response";
 import { NextFunction, Request, Response } from "express";
 
-export async function getAll(_: Request, res: Response, next: NextFunction) {
+export async function getUsers(_: Request, res: Response, next: NextFunction) {
   try {
     const users = await db.query.usersTable.findMany();
 
