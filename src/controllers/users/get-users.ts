@@ -44,8 +44,8 @@
  *         description: Internal Server Error
  */
 
-import { db } from "@/db";
-import { createResponse } from "@/utils/create-response";
+import { db } from "../../db";
+import { createResponse } from "../../utils/create-response";
 import { NextFunction, Request, Response } from "express";
 
 export async function getUsers(_: Request, res: Response, next: NextFunction) {

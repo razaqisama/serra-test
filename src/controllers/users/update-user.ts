@@ -69,10 +69,10 @@
  *         description: Internal Server Error
  */
 
-import { db } from "@/db";
-import { usersTable } from "@/models";
-import { createResponse } from "@/utils/create-response";
-import { ResponseError } from "@/utils/response-error";
+import { db } from "../../db";
+import { usersTable } from "../../models";
+import { createResponse } from "../../utils/create-response";
+import { ResponseError } from "../../utils/response-error";
 import { eq } from "drizzle-orm";
 import { NextFunction, Request, Response } from "express";
 

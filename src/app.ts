@@ -23,6 +23,8 @@ app.use('/', router.get('/', (_req, res) => {
 app.use('/api/v1', routes);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+export { app, server };

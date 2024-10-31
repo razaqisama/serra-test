@@ -1,4 +1,4 @@
-import { createResponse } from '@/utils/create-response';
+import { createResponse } from '../utils/create-response';
 import { NextFunction, Request, Response } from 'express';
 
 export interface IError {
@@ -13,8 +13,8 @@ export default function errorHandler(
   _next: NextFunction,
 ) {
   const { statusCode, message } = err;
-  console.log(err);
+  // console.log(err);
   return createResponse(res, statusCode ?? 500, {
-    error: message ?? 'Internal Server Error',
+    message: message ?? 'Internal Server Error',
   })
 }

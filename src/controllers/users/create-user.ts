@@ -59,9 +59,9 @@
  *         description: Internal Server Error
  */
 
-import { db } from "@/db";
-import { usersTable } from "@/models";
-import { createResponse } from "@/utils/create-response";
+import { db } from "../../db";
+import { usersTable } from "../../models";
+import { createResponse } from "../../utils/create-response";
 import { NextFunction, Request, Response } from "express";
 
 export async function createUser(req: Request, res: Response, next: NextFunction) {
