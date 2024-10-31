@@ -4,8 +4,11 @@ let channel: amqp.Channel;
 
 export async function connectToRabbitMQ() {
   const connection = await amqp.connect('amqp://localhost');
+  
+  console.log("connected to rabbitmq");
+
   channel = await connection.createChannel();
-  await channel.assertQueue('user_notifications');
+  await channel.assertQueue('user_notification');
 }
 
 export async function sendMessageToQueue(queue: string, message: any) {

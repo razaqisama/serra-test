@@ -1,5 +1,5 @@
-import { validateRequest } from '@/middlewares/validate-request';
-import { NotificationValidation } from '@/models';
+import { validateRequest } from '../middlewares/validate-request';
+import { NotificationValidation } from '../models';
 import NotificatioNController from '../controllers/notifications';
 import express from 'express';
 

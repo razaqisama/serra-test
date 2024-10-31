@@ -59,6 +59,7 @@
  *         description: Internal Server Error
  */
 
+import { sendMessageToQueue } from "../../rabbitmq";
 import { db } from "../../db";
 import { usersTable } from "../../models";
 import { createResponse } from "../../utils/create-response";
@@ -73,6 +74,8 @@ export async function createUser(req: Request, res: Response, next: NextFunction
       age,
       email,
     }).returning();
+
+    await sendMessageToQueue('user_notification', createdUser);
 
     return createResponse(res, 201, {
       data: createdUser,

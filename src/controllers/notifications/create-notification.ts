@@ -53,6 +53,7 @@
  *         description: Internal Server Error
  */
 
+import { sendEmail } from "../../utils/send-email";
 import { db } from "../../db";
 import { notificationTable } from "../../models";
 import { createResponse } from "../../utils/create-response";
@@ -66,6 +67,12 @@ export async function createNotification(req: Request, res: Response, next: Next
       message,
       email,
     }).returning();
+
+    await sendEmail({
+      to: email,
+      subject: "User Created Notification",
+      text: message,
+    })
 
     return createResponse(res, 201, {
       data: createdNotification,
