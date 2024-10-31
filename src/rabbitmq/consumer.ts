@@ -1,3 +1,4 @@
+import { config } from '@/config';
 import amqp from 'amqplib';
 
 async function consumeMessages() {
@@ -13,7 +14,7 @@ async function consumeMessages() {
       console.log('Received message:', user);
 
       try {
-        await fetch('http://localhost:4000/api/v1/notifications', {
+        await fetch(`${config.app.baseUrl}/api/v1/notifications`, {
           method: "POST",
           body: JSON.stringify({
             email: user.email,

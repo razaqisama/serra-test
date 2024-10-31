@@ -3,6 +3,7 @@ import 'dotenv/config';
 export const config = {
   app: {
     port: process.env.APP_PORT || 3000,
+    baseUrl: process.env.APP_BASE_URL,
   },
   db: {
     pg: {
