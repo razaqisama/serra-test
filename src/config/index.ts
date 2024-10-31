@@ -15,6 +15,9 @@ export const config = {
       ssl: false,
     },
   },
+  rabbitmq: {
+    url: process.env.RABBITMQ_URL,
+  },
   mailer: {
     service: process.env.MAILER_SERVICE,
     user: process.env.MAILER_USER,

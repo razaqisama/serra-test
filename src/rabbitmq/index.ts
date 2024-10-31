@@ -1,9 +1,10 @@
+import { config } from '../config';
 import amqp from 'amqplib';
 
 let channel: amqp.Channel;
 
 export async function connectToRabbitMQ() {
-  const connection = await amqp.connect('amqp://localhost');
+  const connection = await amqp.connect(config.rabbitmq.url);
   
   console.log("connected to rabbitmq");
 

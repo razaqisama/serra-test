@@ -1,10 +1,10 @@
-import { config } from '@/config';
+import { config } from '../config';
 import amqp from 'amqplib';
 
 async function consumeMessages() {
   console.log("rabbitmq consumer started");
 
-  const connection = await amqp.connect('amqp://localhost');
+  const connection = await amqp.connect(config.rabbitmq.url);
   const channel = await connection.createChannel();
   await channel.assertQueue('user_notification');
 
